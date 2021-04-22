@@ -18,10 +18,9 @@ use App\Http\Controllers\ShopController;
 
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/prodotti/{product}', function (Product $product) {
-    return view('products.single', compact('product'));
-});
-Route::get('/prodotti/{product}', 'ShopController@single');
+
+Route::get('/details/{id}', 'HomeController@ShowDetails');
+
 
 /*
 //Route::get('/', ['as'=>'home','uses'=>'FrontController@getHome']);
