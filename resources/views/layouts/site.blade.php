@@ -1,164 +1,98 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <title>{{ $title }}</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/bootstrap/css/bootstrap.min.css') }}"> -->
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/font-awesome/css/all.css') }}">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-    </script>
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <title>{{ $title }}</title>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Expand at md</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
+            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
 
-
-    <!-- Navigation -->
-    <nav class="navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/#">Greg's store</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for 
-               toggling -->
-            <div class="collapse navbar-collapse" id="navbar1">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="active dropdown-toggle" data-toggle="dropdown"> Categories <span
-                                class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="category.html">Laptops</a></li>
-                            <li><a href="category.html">Desktops</a></li>
-                            <li><a href="category.html">Phones</a></li>
-                            <li><a href="category.html">Software</a></li>
-                            <li><a href="category.html">Printer</a></li>
-                            <li><a href="category.html">Networking Devices</a></li>
-                            <li><a href="category.html">TV</a></li>
-                            <li class="divider"></li>
-                            <li><a href="ecommerce.html">All Categories</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="badge pull-right">0</span><i
-                                class="glyphicon glyphicon-shopping-cart"></i></a></li>
-                    <li><a href="account.html"><i class="glyphicon glyphicon-user"></i></a></li>
-                    <li><a href="loging.html">Sign in</a></li>
-                </ul>
-            </div>
+            <form class="form-inline my-2 my-md-0">
+                <input class="form-control" type="text" placeholder="Search">
+            </form>
         </div>
 
-
-    </nav> <!-- Navigation -->
-
-    <div class=" container-fluid">
-        <div id="site" class="container">
+    </nav>
+    <div class=" container-fluid" style="padding-top: 70px;">
+        <div id=" site" class="container">
             @yield('content')
         </div>
     </div>
 
+
     <!-- Footer -->
-    <footer class="bg-light text-center text-lg-start" style="background-color: #e0ebeb">
+    <footer class="bg-dark text-center text-white">
         <!-- Grid container -->
         <div class="container p-4">
-            <!--Grid row-->
-            <div class="row">
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Greg's store</h5>
 
-                    <p>
-                        Project developed by Andreoli Gregorio
-                    </p>
-                </div>
-                <!--Grid column-->
 
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Links</h5>
 
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#!" class="text-dark">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-dark">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-dark">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-dark">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--Grid column-->
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p>
+                    Progetto 2021
+                </p>
+            </section>
+            <!-- Section: Text -->
 
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-0">Links</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!" class="text-dark">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-dark">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-dark">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-dark">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--Grid column-->
-            </div>
-            <!--Grid row-->
         </div>
         <!-- Grid container -->
 
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            Gregorio Andreoli © 2021 Copyright:
-            <a class="text-dark" href="https://mdbootstrap.com/">-----</a>
+            © 2020 Copyright Gregorio Andreoli:
+            <a class="text-white" href="">--</a>
         </div>
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
-
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/validator.min.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead.js') }}"></script>
-    <script src="{{ asset('assets/js/ecommerce.js') }}"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
