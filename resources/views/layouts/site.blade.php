@@ -15,53 +15,6 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid">
-
-            <a class="navbar-brand" href="{{ url('/') }}">Greg's store</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
-                aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarsExample04">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">Categories</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="{{ url('/') }}">Laptops</a>
-                            <a class="dropdown-item" href="{{ url('/') }}">Desktops</a>
-                            <a class="dropdown-item" href="{{ url('/') }}">Phones</a>
-                        </div>
-                    </li>
-
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><span class="badge pull-right">0</span><i
-                                class="fa fa-shopping-cart"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=" account.html"> <i class="fa fa-user" aria-hidden="true"></i></a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href=" loging.html">Sign in</a>
-                    </li>
-
-                </ul>
-
-
-
-
-            </div>
-        </div>
-    </nav>
 
 
 
@@ -71,34 +24,6 @@
     </div>
 
 
-
-    <!-- Footer -->
-    <footer class="bg-dark text-center text-white">
-        <!-- Grid container -->
-        <div class="container p-4">
-
-
-
-            <!-- Section: Text -->
-            <section class="mb-4">
-                <p>
-                    Progetto 2021
-                </p>
-            </section>
-            <!-- Section: Text -->
-
-        </div>
-        <!-- Grid container -->
-
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2020 Copyright Gregorio Andreoli:
-            <a class="text-white" href="">--</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

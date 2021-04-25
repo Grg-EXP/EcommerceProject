@@ -16,13 +16,19 @@ use App\Http\Controllers\ShopController;
 |
 */
 
-
-Route::get('/', 'HomeController@index')->name('home');
-
-Route::get('/details/{id}', 'HomeController@ShowDetails');
+Route::view('/', 'main');
+Route::view('/products', 'products');
+Route::view('/product', 'product');
+Route::view('/cart', 'cart');
+Route::view('/checkout', 'checkout');
+Route::view('/thankyou', 'thankyou');
 
 
 /*
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/details/{Product:id}', 'ShopController@ShowDetails');
+
 //Route::get('/', ['as'=>'home','uses'=>'FrontController@getHome']);
 //Route::get('/user/login', [NomeClasseController::class, 'nomeMetodo']);
 

@@ -22,14 +22,5 @@ class HomeController extends Controller
         ]);
     }
 
-    public function ShowDetails($id)
-    {
-        $dl = new DataLayer();
-        $product = $dl->getProduct($id);
-        $title = "titolo";
-        return view('detail', [
-            'title' => 'details',
-            'product' => $product,
-        ]);
-    }
+  
 }
