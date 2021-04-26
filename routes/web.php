@@ -16,6 +16,13 @@ use App\Http\Controllers\ShopController;
 |
 */
 
+Route::get('/', function () {
+    return view('login');
+});
+
+
+
+/*
 Route::view('/', 'main');
 Route::view('/products', 'products');
 Route::view('/product', 'product');
@@ -24,7 +31,7 @@ Route::view('/checkout', 'checkout');
 Route::view('/thankyou', 'thankyou');
 
 
-/*
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/details/{Product:id}', 'ShopController@ShowDetails');
