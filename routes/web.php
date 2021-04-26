@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,12 @@ use App\Http\Controllers\ShopController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('login');
 });
 
+Route::post("/login", [UserController::class, 'login']);
+Route::get("/", [ProductController::class, 'index']);
 
 
 /*
