@@ -35,7 +35,9 @@
 
         <div class="container">
             <div class="row">
+
                 @foreach ($products as $item)
+
                     <div class="col-lg-3 col-md-4 col-md-6  col-xs-6">
                         <br>
                         <div class="container">
@@ -45,13 +47,14 @@
                             </a>
                             <div>
                                 <ul class="product_price list-unstyled">
-                                    <li class="old_price">{{ $item['price'] }}</li>
-                                    <li class="new_price">$13.00</li>
+                                    <li>${{ $item['price'] }}</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+
                 @endforeach
+
             </div>
         </div>
 

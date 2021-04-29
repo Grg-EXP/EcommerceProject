@@ -2,5 +2,5 @@
     <div class="panel-body">
         Panel content
     </div>
-    <div class="panel-footer">Copyright Gregorio Andreoli:</div>
+    <div class="panel-footer">Copyright Gregorio Andreoli</div>
 </div>

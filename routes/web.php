@@ -23,6 +23,8 @@ Route::get('/login', function () {
 
 Route::post("/login", [UserController::class, 'login']);
 Route::get("/", [ProductController::class, 'index']);
+Route::get('/detail/{Product:id}', [ProductController::class, 'detail']);
+Route::get('/search', [ProductController::class, 'search']);
 
 
 /*

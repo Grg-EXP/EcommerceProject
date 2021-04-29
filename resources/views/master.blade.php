@@ -32,8 +32,6 @@
         padding-top: 100px;
     }
 
-
-
     img.slider-img {
         height: 300px !important
     }
@@ -42,16 +40,9 @@
         height: 600px
     }
 
-    .slider-text {
-        color: rgb(255, 255, 255) !important;
-        background-color: rgba(42, 42, 42, 0.418);
-
-    }
-
     .trending-image {
         height: 100px;
     }
-
 
 
     .trending-wrapper {
@@ -59,12 +50,10 @@
     }
 
     .detail-img {
-        height: 200px;
+        width: 100%;
+        height: auto;
     }
 
-    .search-box {
-        width: 500px !important
-    }
 
     .cart-list-devider {
         border-bottom: 1px solid #ccc;
