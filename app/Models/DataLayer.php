@@ -39,9 +39,6 @@ class DataLayer extends Model
 
 
 
-    public function addProduct($name)
-    {
-    }
 
 
     public function validUser($username, $password)
