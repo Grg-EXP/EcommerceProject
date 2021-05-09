@@ -33,7 +33,7 @@ $total = ProductController::cartItem(Session::get('user')['id']);
             </form>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" class="glyphicon glyphicon-shopping-cart">Cart({{ $total }})</a></li>
+                <li><a href="/cartlist" class="glyphicon glyphicon-shopping-cart">Cart({{ $total }})</a></li>
 
                 @if (Session::has('user'))
                     <li class="dropdown">
