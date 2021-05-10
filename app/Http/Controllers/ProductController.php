@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Address;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\DB;
 
@@ -63,11 +64,14 @@ class ProductController extends Controller
     function orderNow(Request $req)
     {
         $userId =  $req->session()->get('user')['id'];
+        $addresses = Address::where('user_id', $userId)->select('address')->get();;
+
         $total = DB::table('cart')
             ->join('products', 'cart.product_id', '=', 'products.id')
             ->where('cart.user_id', $userId)
             ->sum('products.price');
-
-        return view('ordernow', ['total' => $total]);
+        $products = DB::table('cart')->join('products', 'cart.product_id', '=', 'products.id')
+            ->where('cart.user_id', $userId)->get();
+        return view('ordernow', ['total' => $total, 'addresses' => $addresses, 'products' => $products]);
     }
 }
