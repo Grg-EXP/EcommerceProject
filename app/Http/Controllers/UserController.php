@@ -9,14 +9,15 @@ use  Illuminate\Session\Middleware\StartSession;
 
 class UserController extends Controller
 {
-    function login(Request $request)
+    function login(Request $req)
     {
-        $user = User::where(['email' => $request->email])->first();
-        if ($user || Hash::check($request->password, $user->$user->password)) {
-            $request->session()->put('user', $user);
-            return redirect('/');
+
+        $user = User::where(['email' => $req->email])->first();
+        if (!$user || !Hash::check($req->password, $user->password)) {
+            return "Username or password is not matched";
         } else {
-            return "username or password is not matched";
+            $req->session()->put('user', $user);
+            return redirect('/');
         }
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Address;
+use App\Models\Order;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\DB;
 
@@ -73,5 +74,23 @@ class ProductController extends Controller
         $products = DB::table('cart')->join('products', 'cart.product_id', '=', 'products.id')
             ->where('cart.user_id', $userId)->get();
         return view('ordernow', ['total' => $total, 'addresses' => $addresses, 'products' => $products]);
+    }
+
+    function orderPlace(Request $req)
+    {
+        $userId = $req->session()->get('user')['id'];
+        $allCart = Cart::where('user_id', $userId)->get();
+        foreach ($allCart as $cart) {
+            $order = new Order();
+            $order->user_id = $cart['user_id'];
+            $order->product_id = $cart['product_id'];
+            $order->status = "pending";
+            $order->payment_method = $req->payment;
+            $order->payment_status = "pending";
+            $order->address = $req->chosen_address;
+            $order->save();
+            Cart::where('user_id', $userId)->delete();
+        }
+        return redirect('/');
     }
 }

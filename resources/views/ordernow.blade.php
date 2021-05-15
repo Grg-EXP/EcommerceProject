@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-
+    <br>
     <div class="container">
         <div class="row">
 
@@ -74,4 +74,5 @@
             </div>
         </div>
     </div>
+    <br>
 @endsection

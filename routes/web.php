@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Session;
 */
 
 Route::get('/login', function () {
-    return view('login'); // user:mia email, pw=1234
+    return view('login'); // user:mia email, pw=12345
 });
 Route::get('/logout', function () {
     Session::forget('user');
@@ -36,6 +36,7 @@ Route::group(['middleware' => ['UserAuth']], function () {
     Route::get('cartlist', [ProductController::class, 'cartlist']);
     Route::get('removecart/{id}', [ProductController::class, 'removeCart']);
     Route::get('ordernow', [ProductController::class, 'orderNow']);
+    Route::post('orderplace', [ProductController::class, 'orderPlace']);
 });
 
 
