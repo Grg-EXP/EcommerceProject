@@ -21,11 +21,13 @@ use Illuminate\Support\Facades\Session;
 Route::get('/login', function () {
     return view('login'); // user:mia email, pw=12345
 });
+Route::get('/register', [UserController::class, 'register']);
 Route::get('/logout', function () {
     Session::forget('user');
     return view('login');
 });
 Route::post("/login", [UserController::class, 'login']);
+Route::post("/register", [UserController::class, 'addNewUser']);
 
 Route::get("/", [ProductController::class, 'index']);
 Route::get('/detail/{Product:id}', [ProductController::class, 'detail']);
@@ -37,6 +39,7 @@ Route::group(['middleware' => ['UserAuth']], function () {
     Route::get('removecart/{id}', [ProductController::class, 'removeCart']);
     Route::get('ordernow', [ProductController::class, 'orderNow']);
     Route::post('orderplace', [ProductController::class, 'orderPlace']);
+    Route::get('myorders', [ProductController::class, 'myOrders']);
 });
 
 

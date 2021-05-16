@@ -1,8 +1,9 @@
   @extends('master')
   @section('content')
-      <div class="container custom-login">
+      <div class="container">
           <div class="row">
-              <div class="col-sm-4 col-sm-offset-4">
+              <div class="col-sm-5 col-sm-offset-4">
+                  <h2>Login</h2>
                   <form action="login" method="POST">
                       <div class="form-group">
                           @csrf
@@ -14,7 +15,9 @@
                           <input type="password" name="password" class="form-control" id="exampleInputPassword1"
                               placeholder="Password">
                       </div>
-                      <button type="submit" class="btn btn-default">Login</button>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+                      </div>
                   </form>
               </div>
           </div>

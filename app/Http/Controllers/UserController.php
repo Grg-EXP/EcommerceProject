@@ -20,4 +20,22 @@ class UserController extends Controller
             return redirect('/');
         }
     }
+    function register(Request $req)
+    {
+
+        return view('register');
+    }
+    function addNewUser(Request $req)
+    {
+        $user_count = User::where(['email' => $req->email])->count();
+        if ($user_count == 0 && $req->password == $req->confirm_password) {
+            $user = new User();
+            $user->name = $req->name;
+            $user->email = $req->email;
+            $user->password = Hash::make($req->password);
+            $user->save();
+            $req->session()->put('user', $user);
+            return redirect('/');
+        } else return "password errata o email gia esistente";
+    }
 }
