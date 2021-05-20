@@ -47,7 +47,7 @@
                             </a>
                             <div>
                                 <ul class="product_price list-unstyled">
-                                    <li>${{ $item['price'] }}</li>
+                                    <li>€{{ $item['price'] }}</li>
                                 </ul>
                             </div>
                         </div>

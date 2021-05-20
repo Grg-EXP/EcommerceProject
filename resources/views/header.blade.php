@@ -27,7 +27,7 @@ $total = ProductController::cartItem(Session::get('user')['id']);
             </ul>
             <form action="/search" class="navbar-form navbar-left">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" name="query" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
@@ -41,6 +41,7 @@ $total = ProductController::cartItem(Session::get('user')['id']);
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/logout">Logout</a></li>
+                            <li><a href="/address">Address</a></li>
                         </ul>
                     </li>
                 @else

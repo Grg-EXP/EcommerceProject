@@ -16,8 +16,13 @@
                               placeholder="Password">
                       </div>
                       <div class="form-group">
-                          <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+                          <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
                       </div>
+                      @if ($error)
+                          <div class="alert alert-danger" role="alert">
+                              The email or password is incorrect
+                          </div>
+                      @endif
                   </form>
               </div>
           </div>
