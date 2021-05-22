@@ -15,7 +15,7 @@ class UserController extends Controller
 
     function showLogin(Request $req)
     {
-        return view('login', ['error', False]);
+        return view('login', ['error' => False]);
     }
 
     function login(Request $req)

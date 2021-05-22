@@ -6,12 +6,9 @@
             <div class=" col-lg-3 col-md-4 col-md-6  col-xs-6">
                 <br>
                 <div class="container ">
-
-
                     <h3>
                         {{ $address->address }}
                     </h3>
-
                     <div>
                         <ul class="product_price list-unstyled">
                             <li>{{ $address->name }}</li>
@@ -19,6 +16,11 @@
                             <li>{{ $address->city }}</li>
                             <li>{{ $address->zip }}</li>
                             <li>{{ $address->country }}</li>
+
+                            <a href="/removeaddress/{{ $address->id }}"
+                                onclick="return confirm('Are you sure you want to delete this item?');"
+                                class="btn btn-danger btn-md glyphicon glyphicon-trash">Remove address</a>
+
                         </ul>
                     </div>
                 </div>
@@ -40,7 +42,8 @@
                     <div class="form-group">
                         <label for="inputFullName" class="col-sm-2 control-label">Full Name</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="inputFullName" name="name" placeholder="Full Name">
+                            <input type="text" required="required" class="form-control" id="inputFullName" name="name"
+                                placeholder="Full Name">
                         </div>
                     </div>
 
@@ -48,7 +51,7 @@
                         <p class="col-sm-offset-2 col-sm-10 help-block">Street address, P.O. box, company name, c/o</p>
                         <label for="inputAddress" class="col-sm-2 control-label">Address</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="inputAddress" name="address"
+                            <input type="text" required="required" class="form-control" id="inputAddress" name="address"
                                 placeholder="Address Line 1">
                         </div>
                     </div>
@@ -56,7 +59,7 @@
                     <div class="form-group">
                         <label for="inputCityTown" class="col-sm-2 control-label">City / Town</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="inputCityTown" name="city"
+                            <input type="text" required="required" class="form-control" id="inputCityTown" name="city"
                                 placeholder="City / Town">
                         </div>
                     </div>
@@ -65,15 +68,15 @@
                         <label for="inputStateProvinceRegion" class="col-sm-2 control-label">State / Province /
                             Region</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="inputStateProvinceRegion" name="region"
-                                placeholder="State / Province / Region">
+                            <input type="text" required="required" class="form-control" id="inputStateProvinceRegion"
+                                name="region" placeholder="State / Province / Region">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputZipPostalCode" class="col-sm-2 control-label">Zip / Postal Code</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="inputZipPostalCode" name="zip"
+                            <input type="text" required="required" class="form-control" id="inputZipPostalCode" name="zip"
                                 placeholder="Zip / Postal Code">
                         </div>
                     </div>
@@ -81,7 +84,7 @@
                     <div class="form-group">
                         <label for="selectCountry" class="col-sm-2 control-label">Country</label>
                         <div class="col-sm-6">
-                            <select class="form-control" id="selectCountry" name="country">
+                            <select class="form-control" required="required" id="selectCountry" name="country">
                                 <option value="" selected="selected">(please select a country)</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AL">Albania</option>

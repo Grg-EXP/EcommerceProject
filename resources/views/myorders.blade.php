@@ -13,12 +13,13 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="">
-                                <h2>Name : {{ $item->name }}</h2>
+                                <h2> {{ $item->name }}</h2>
                                 <h5>Delivery Status : {{ $item->status }}</h5>
                                 <h5>Address : {{ $item->address }}</h5>
                                 <h5>Payment Status : {{ $item->payment_status }}</h5>
                                 <h5>Payment Method : {{ $item->payment_method }}</h5>
-
+                                <h5>Total price : € {{ $item->total_price }}</h5>
+                                <h5>Date : {{ $item->date }}</h5>
                             </div>
                         </div>
 

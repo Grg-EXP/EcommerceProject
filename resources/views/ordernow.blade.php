@@ -13,7 +13,10 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="">
-                            <h2>{{ $item->name }}</h2>
+                            <h3>{{ $item->name }}</h3>
+                            <h5>Quantity : {{ $item->quantity }}</h5>
+                            <h5>Price : {{ $item->price }} €</h5>
+                            <h5>Total : {{ $item->price * $item->quantity }} €</h5>
                             <h5>{{ $item->description }}</h5>
                         </div>
                     </div>
@@ -67,7 +70,7 @@
                         <input type="radio" value="cash" name="payment" id="p2"> <label for="p2">ATM card</label> <br><br>
                         <input type="radio" value="cash" name="payment" id="p3"> <label for="p3">Payment on Delivery</label>
                         <br> <br>
-
+                        <input type="hidden" value="{{ $item->price * $item->quantity }}" name="total">
                     </div>
                     <button type="submit" class="btn btn-default">Order Now</button>
                 </form>

@@ -38,6 +38,7 @@ Route::group(['middleware' => ['UserAuth']], function () {
     Route::post('orderplace', [ProductController::class, 'orderPlace']);
     Route::get('myorders', [ProductController::class, 'myOrders']);
     Route::get('address', [UserController::class, 'showAddress']);
+    Route::get('removeaddress/{id}', [ProductController::class, 'removeAddress']);
     Route::post('address', [UserController::class, 'addAddress']);
 });
 

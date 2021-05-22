@@ -31,6 +31,7 @@
                     </div>
                 </form>
                 <div class="text-center">Already have an account? <a href="login">Login</a></div>
+                <br>
             </div>
         </div>
     </div>

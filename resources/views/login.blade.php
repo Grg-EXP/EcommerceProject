@@ -8,12 +8,13 @@
                       <div class="form-group">
                           @csrf
                           <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                          <input type="email" required="required" name="email" class="form-control" id="exampleInputEmail1"
+                              placeholder="Email">
                       </div>
                       <div class="form-group">
                           <label for="exampleInputPassword1">Password</label>
-                          <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-                              placeholder="Password">
+                          <input type="password" required="required" name="password" class="form-control"
+                              id="exampleInputPassword1" placeholder="Password">
                       </div>
                       <div class="form-group">
                           <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
@@ -23,6 +24,9 @@
                               The email or password is incorrect
                           </div>
                       @endif
+                      <div class="text-center">
+                          Not registered yet? <a href="register">Register</a></div>
+                      <br>
                   </form>
               </div>
           </div>
