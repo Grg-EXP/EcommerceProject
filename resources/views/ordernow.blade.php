@@ -58,9 +58,13 @@
                         </div>
                         <br>
                         @foreach ($addresses as $address)
-                            <input type="radio" value="{{ $address['address'] }}" name="chosen_address"
-                                id="{{ $address['address'] }}"> <label
-                                for="{{ $address['address'] }}">{{ $address['address'] }}
+                            <input type="radio" value="{{ $address['id'] }}" name="chosen_address"
+                                id="{{ $address['address'] }}">
+                            <label for="{{ $address['address'] }}">
+                                <h5>{{ $address['name'] }}, {{ $address['address'] }},
+                                    {{ $address['city'] }}, {{ $address['region'] }}, {{ $address['country'] }},
+                                    {{ $address['zip'] }}
+                                </h5>
                             </label> <br> <br>
                         @endforeach
                     </div>

@@ -7,11 +7,11 @@
                 <br>
                 <div class="container ">
                     <h3>
-                        {{ $address->address }}
+                        {{ $address->name }}
                     </h3>
                     <div>
                         <ul class="product_price list-unstyled">
-                            <li>{{ $address->name }}</li>
+                            <li>{{ $address->address }}</li>
                             <li>{{ $address->region }}</li>
                             <li>{{ $address->city }}</li>
                             <li>{{ $address->zip }}</li>
@@ -19,7 +19,8 @@
 
                             <a href="/removeaddress/{{ $address->id }}"
                                 onclick="return confirm('Are you sure you want to delete this item?');"
-                                class="btn btn-danger btn-md glyphicon glyphicon-trash">Remove address</a>
+                                class="btn btn-danger btn-md glyphicon glyphicon-trash">Remove address
+                            </a>
 
                         </ul>
                     </div>
@@ -36,8 +37,6 @@
             <div class="col-sm-8 col-sm-offset-3">
                 <form class="form-horizontal" method="POST" action="address" role="form">
                     @csrf
-
-
 
                     <div class="form-group">
                         <label for="inputFullName" class="col-sm-2 control-label">Full Name</label>

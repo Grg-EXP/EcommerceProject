@@ -40,6 +40,7 @@ Route::group(['middleware' => ['UserAuth']], function () {
     Route::get('address', [UserController::class, 'showAddress']);
     Route::get('removeaddress/{id}', [ProductController::class, 'removeAddress']);
     Route::post('address', [UserController::class, 'addAddress']);
+    Route::get('/ajax', [UserController::class, 'ajaxCheckForUser']);
 });
 
 
