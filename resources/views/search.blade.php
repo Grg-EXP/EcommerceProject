@@ -1,7 +1,12 @@
 @extends('master')
 @section('content')
     <br>
-    <h4 class="text-center">Results</h4>
+    @if (count($searched_products) > 0)
+        <h4 class="text-center"> Results found</h4>
+
+    @else
+        <h4 class="text-center">No results found</h4>
+    @endif
     <br><br>
     <div class="container">
         <div class="row">
@@ -22,4 +27,5 @@
             @endforeach
         </div>
     </div>
+    <br><br>
 @endsection

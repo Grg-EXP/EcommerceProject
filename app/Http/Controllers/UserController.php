@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Redirect;
 use App\Models\Address;
 use  Illuminate\Session\Middleware\StartSession;
 use phpDocumentor\Reflection\PseudoTypes\True_;
@@ -18,11 +18,18 @@ class UserController extends Controller
         if (!session()->has('url.intended')) {
             session(['url.intended' => url()->previous()]);
         }
-        return view('login', ['error' => False]);
+        return view('login');
     }
 
     function login(Request $req)
     {
+        //view login
+        $req->validate([
+            'email' => 'required|email|max:255',
+            'password' => 'required|max:255',
+        ]);
+        //
+
         $user = User::where(['email' => $req->email])->first();
 
         if (!$user || !Hash::check($req->password, $user->password)) {
@@ -47,7 +54,7 @@ class UserController extends Controller
                 $request->session()->forget('url.intended');
             }
         }
-        return view('login', ['error' => False]);
+        return view('login');
     }
 
     function showRegister(Request $req)
@@ -57,6 +64,13 @@ class UserController extends Controller
 
     function addNewUser(Request $req)
     {
+        $req->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|max:255',
+            'password' => 'required|max:255',
+            'confirm_password' => 'required|max:255',
+        ]);
+
         $user_count = User::where(['email' => $req->email])->count();
         if ($user_count == 0 && $req->password == $req->confirm_password) {
             $user = new User();
@@ -66,7 +80,9 @@ class UserController extends Controller
             $user->save();
             $req->session()->put('user', $user);
             return redirect('/');
-        } else return "password errata o email gia esistente";
+        } else return  Redirect::back()->withErrors(['msg', 'The Message']);
+        //view('register', ['error' => True]);
+        //Redirect::back()->withErrors(['msg', 'The Message']);
     }
 
     function showAddress(Request $req)
@@ -78,6 +94,15 @@ class UserController extends Controller
 
     function addAddress(Request $req)
     {
+        $req->validate([
+            'address' => 'required|max:255',
+            'name' => 'required|max:255',
+            'city' => 'required|max:255',
+            'region' => 'required|max:255',
+            'zip' => 'required|max:50',
+            'country' => 'required|max:255',
+        ]);
+
         $userId =  $req->session()->get('user')['id'];
         $address = new Address();
         $address->user_id = $userId;
@@ -91,6 +116,15 @@ class UserController extends Controller
         return redirect('address');
     }
 
+    public function ajaxCheckForRegistration(Request $req)
+    {
+        $user_count = User::where(['email' => $req->email])->count();
+        if ($user_count == 0 && $req->password == $req->confirm_password) {
+            return response()->json(['validation' => True]);
+        } else {
+            return response()->json(['validation' => False]);
+        }
+    }
 
     public function ajaxCheckForUser(Request $req)
     {
@@ -100,7 +134,6 @@ class UserController extends Controller
         } else {
             $response = array('found' => false);
         }
-        return response()->json($response);
     }
 
     public function ajaxCheckForMatch(Request $req)

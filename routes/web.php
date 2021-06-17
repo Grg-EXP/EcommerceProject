@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Session;
 Route::get('login', [UserController::class, 'showLogin']);
 Route::get('register', [UserController::class, 'showRegister']);
 Route::get('logout', [UserController::class, 'logout']);
+Route::post('/ajaxRegister', [UserController::class, 'ajaxCheckForRegistration']);
+Route::get('/ajaxUser', [UserController::class, 'ajaxCheckForUser']);
 
 Route::post("login", [UserController::class, 'login']);
 Route::post("register", [UserController::class, 'addNewUser']);
@@ -29,6 +31,7 @@ Route::post("register", [UserController::class, 'addNewUser']);
 Route::get("/", [ProductController::class, 'index']);
 Route::get('/detail/{Product:id}', [ProductController::class, 'detail']);
 Route::get('/search', [ProductController::class, 'search']);
+
 
 Route::group(['middleware' => ['UserAuth']], function () {
     Route::post('add_to_cart', [ProductController::class, 'addToCart']);
@@ -40,7 +43,6 @@ Route::group(['middleware' => ['UserAuth']], function () {
     Route::get('address', [UserController::class, 'showAddress']);
     Route::get('removeaddress/{id}', [ProductController::class, 'removeAddress']);
     Route::post('address', [UserController::class, 'addAddress']);
-    Route::get('/ajax', [UserController::class, 'ajaxCheckForUser']);
 });
 
 

@@ -9,6 +9,7 @@ use App\Models\Address;
 use App\Models\Order;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -32,7 +33,16 @@ class ProductController extends Controller
 
     function addToCart(Request $req)
     {
+
+        //view details
+        $req->validate([
+            'quantity' => 'required|integer|min:1|max:100',
+        ]);
+        //
+
         $userId = $req->session()->get('user')['id'];
+
+
         if (Cart::where('user_id', $userId)->where('product_id', $req->product_id)->count() > 0) {
             print(Cart::where('user_id', $userId)->where('product_id', $req->product_id)->get());
             $newQuantity = Cart::where('user_id', $userId)->where('product_id', $req->product_id)->first()->quantity;

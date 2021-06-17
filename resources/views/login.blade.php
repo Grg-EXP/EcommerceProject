@@ -19,11 +19,19 @@
                       <div class="form-group">
                           <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
                       </div>
-                      @if ($error)
-                          <div class="alert alert-danger" role="alert">
-                              The email or password is incorrect
+                      @isset($error)
+
+                          <div class="alert alert-danger">
+                              <ul>
+
+                                  Attenzione: password o email errate
+
+                              </ul>
                           </div>
-                      @endif
+
+
+                      @endisset
+
                       <div class="text-center">
                           Not registered yet? <a href="register">Register</a></div>
                       <br>

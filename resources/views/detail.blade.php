@@ -1,6 +1,8 @@
 @extends('master')
 @section('content')
     <div class="container">
+
+
         <div class="row">
             <div class="col-sm-6">
                 <img class="detail-img img-fluid" src="{{ $product['gallery'] }}" alt="">
@@ -14,7 +16,6 @@
 
 
 
-
                 <form action="/add_to_cart" method="POST">
                     @csrf
                     <div class="input-group ">
@@ -24,13 +25,23 @@
                             class=" btn-success">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
-                        <input class="form-control input-number" min="1" name="quantity" value="1" type="number">
+                        <input class="form-control input-number" name="quantity" value="1" type="number" min="1" max="100">
                         <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                             class=" btn-danger ">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
 
                     </div>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <br><br>
                     <input type="hidden" name="product_id" value={{ $product['id'] }}>
                     <button type="submit" class="btn btn-primary">Add to Cart</button>
@@ -40,4 +51,5 @@
             </div>
         </div>
     </div>
+
 @endsection
