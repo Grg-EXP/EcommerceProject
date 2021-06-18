@@ -87,7 +87,7 @@ function checkRegistration() {
                     password_msg.html("");
                     confirm_password_msg.html("");
                     confirm_password.focus();
-                    registration_alert.html("Password errata o email gia utilizzata da un altro utente");
+                    registration_alert.html("Wrong password or email already used by another user");
 
                 }
             },
@@ -150,8 +150,7 @@ function checkLogin() {
                     email_msg.html("");
                     password_msg.html("");
                     password.focus();
-                    registration_alert.html("Password o email errate");
-
+                    registration_alert.html("Wrong password or email");
                 }
             },
         });

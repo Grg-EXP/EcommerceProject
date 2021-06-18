@@ -14,10 +14,7 @@ class UserController extends Controller
 
     function showLogin(Request $req)
     {
-        if (!session()->has('url.intended')) {
-            if (url()->previous() != 'register' && url()->previous() != 'ajaxLogin' && url()->previous() != 'ajaxRegister')
-                session(['url.intended' => url()->previous()]);
-        }
+        session(['url.intended' => url()->previous()]);
         return view('login');
     }
 
@@ -77,8 +74,6 @@ class UserController extends Controller
             $req->session()->put('user', $user);
             return redirect('/');
         } else return  Redirect::back()->withErrors(['msg', 'The Message']);
-        //view('register', ['error' => True]);
-        //Redirect::back()->withErrors(['msg', 'The Message']);
     }
 
     function showAddress(Request $req)

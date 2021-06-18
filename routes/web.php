@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Session;
 */
 
 
-Route::get('login', [UserController::class, 'showLogin']);
-Route::get('register', [UserController::class, 'showRegister']);
+Route::get('/login', [UserController::class, 'showLogin']);
+Route::get('/register', [UserController::class, 'showRegister']);
 Route::get('logout', [UserController::class, 'logout']);
 Route::post('/ajaxRegister', [UserController::class, 'ajaxCheckForRegistration']);
 Route::post('/ajaxLogin', [UserController::class, 'ajaxCheckForLogin']);

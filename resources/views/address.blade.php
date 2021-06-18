@@ -1,4 +1,4 @@
-@extends('master')
+@extends('core.master')
 @section('content')
     <br>
     <div class="container-fluid">

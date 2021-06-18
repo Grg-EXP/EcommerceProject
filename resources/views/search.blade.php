@@ -1,4 +1,4 @@
-@extends('master')
+@extends('core.master')
 @section('content')
     <br>
     @if (count($searched_products) > 0)
@@ -16,7 +16,7 @@
                     <br>
                     <div class="">
                         <a href="detail/{{ $s_product['id'] }}">
-                            <img class="trending-image" src="{{ $s_product['gallery'] }}">
+                            <img class="trending-image" src="{{ url('/') }}/images/{{ $s_product['gallery'] }}">
                             <div class="">
                                 <h2>{{ $s_product['name'] }}</h2>
                                 <h5>{{ $s_product['description'] }}</h5>

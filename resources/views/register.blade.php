@@ -1,4 +1,4 @@
-@extends('master')
+@extends('core.master')
 @section('content')
     <div class="container  signup-form">
         <div class="row">

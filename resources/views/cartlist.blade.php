@@ -1,4 +1,4 @@
-@extends('master')
+@extends('core.master')
 @section('content')
     <div class="custom-product">
         <div class="col-sm-10">

@@ -22,10 +22,9 @@
 </head>
 
 <body>
-    {{ View::make('header') }}
+    {{ View::make('core.header') }}
     @yield('content')
-
-    {{ View::make('footer') }}
+    {{ View::make('core.footer') }}
 
 </body>
 <style>
