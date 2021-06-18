@@ -7,22 +7,34 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Address;
 use App\Models\Order;
-use Illuminate\Contracts\Session\Session;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
     function index()
     {
-        $products = Product::all();
-        return view('product', ['products' => $products]);
+        $products = Product::all()->take(12);
+        $category = Category::all();
+        return view('product', ['products' => $products, 'categories' => $category]);
     }
 
     function detail($id)
     {
-        $product = Product::find($id);
+
+        $product = DB::table('products')->join('category', 'products.category_id', '=', 'category.id')
+            ->where('products.id', $id)
+            ->select('products.*', 'category.name as category')
+            ->first();
+
         return view('detail', ['product' => $product]);
+    }
+
+    function category($id)
+    {
+        $products = Product::where('category_id', $id)->get()->take(30);
+        $category = Category::all();
+        return view('product', ['products' => $products, 'categories' => $category, 'set_c' => $id]);
     }
 
     function search(Request $req)
@@ -44,7 +56,6 @@ class ProductController extends Controller
 
 
         if (Cart::where('user_id', $userId)->where('product_id', $req->product_id)->count() > 0) {
-            print(Cart::where('user_id', $userId)->where('product_id', $req->product_id)->get());
             $newQuantity = Cart::where('user_id', $userId)->where('product_id', $req->product_id)->first()->quantity;
             $newQuantity = $newQuantity + $req->quantity;
             Cart::where('user_id', $userId)->where('product_id', $req->product_id)->update(['quantity' => $newQuantity]);
@@ -73,7 +84,7 @@ class ProductController extends Controller
             ->select('products.*', 'cart.id as cart_id', 'cart.quantity as quantity')
             ->get();
 
-        return view('cartlist', ['products' => $products,]);
+        return view('cartlist', ['products' => $products]);
     }
 
     function removeCart($id)

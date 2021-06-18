@@ -30,6 +30,7 @@ Route::post("register", [UserController::class, 'addNewUser']);
 
 Route::get("/", [ProductController::class, 'index']);
 Route::get('/detail/{Product:id}', [ProductController::class, 'detail']);
+Route::get('/category/{Category:id}', [ProductController::class, 'category']);
 Route::get('/search', [ProductController::class, 'search']);
 
 

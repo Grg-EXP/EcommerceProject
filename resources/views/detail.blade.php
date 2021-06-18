@@ -5,14 +5,14 @@
 
         <div class="row">
             <div class="col-sm-6">
-                <img class="detail-img img-fluid" src="{{ $product['gallery'] }}" alt="">
+                <img class="detail-img img-fluid" src="{{ url('/') }}/images/{{ $product->gallery }}">
             </div>
             <div class="col-sm-6">
                 <a href="/">Go Back</a>
-                <h3>{{ $product['name'] }}</h3>
-                <h3>Price : € {{ $product['price'] }}</h3>
-                <h4>Details: {{ $product['description'] }}</h4>
-                <h4>Category: {{ $product['category'] }}</h4>
+                <h3>{{ $product->name }}</h3>
+                <h3>Price : € {{ $product->price }}</h3>
+                <h4>Details: {{ $product->description }}</h4>
+                <h4>Category: {{ $product->category }}</h4>
 
 
 
@@ -43,7 +43,7 @@
                         </div>
                     @endif
                     <br><br>
-                    <input type="hidden" name="product_id" value={{ $product['id'] }}>
+                    <input type="hidden" name="product_id" value={{ $product->id }}>
                     <button type="submit" class="btn btn-primary">Add to Cart</button>
                 </form>
                 <br><br>

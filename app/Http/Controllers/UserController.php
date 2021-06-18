@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Address;
-use  Illuminate\Session\Middleware\StartSession;
-use phpDocumentor\Reflection\PseudoTypes\True_;
+
 
 class UserController extends Controller
 {
@@ -32,7 +31,6 @@ class UserController extends Controller
         //
 
         $user = User::where(['email' => $req->email])->first();
-
 
         $req->session()->put('user', $user);
         if (session()->has('url.intended')) {
