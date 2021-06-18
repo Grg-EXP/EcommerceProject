@@ -23,7 +23,7 @@ Route::get('login', [UserController::class, 'showLogin']);
 Route::get('register', [UserController::class, 'showRegister']);
 Route::get('logout', [UserController::class, 'logout']);
 Route::post('/ajaxRegister', [UserController::class, 'ajaxCheckForRegistration']);
-Route::get('/ajaxUser', [UserController::class, 'ajaxCheckForUser']);
+Route::post('/ajaxLogin', [UserController::class, 'ajaxCheckForLogin']);
 
 Route::post("login", [UserController::class, 'login']);
 Route::post("register", [UserController::class, 'addNewUser']);

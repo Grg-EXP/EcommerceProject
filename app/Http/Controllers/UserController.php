@@ -16,7 +16,8 @@ class UserController extends Controller
     function showLogin(Request $req)
     {
         if (!session()->has('url.intended')) {
-            session(['url.intended' => url()->previous()]);
+            if (url()->previous() != 'register' && url()->previous() != 'ajaxLogin' && url()->previous() != 'ajaxRegister')
+                session(['url.intended' => url()->previous()]);
         }
         return view('login');
     }
@@ -32,17 +33,14 @@ class UserController extends Controller
 
         $user = User::where(['email' => $req->email])->first();
 
-        if (!$user || !Hash::check($req->password, $user->password)) {
-            return view('login', ['error' => True]);
+
+        $req->session()->put('user', $user);
+        if (session()->has('url.intended')) {
+            $url = $req->session()->get('url.intended');
+            $req->session()->forget('url.intended');
+            return redirect($url);
         } else {
-            $req->session()->put('user', $user);
-            if (session()->has('url.intended')) {
-                $url = $req->session()->get('url.intended');
-                $req->session()->forget('url.intended');
-                return redirect($url);
-            } else {
-                return redirect('/');
-            }
+            return redirect('/');
         }
     }
 
@@ -126,23 +124,14 @@ class UserController extends Controller
         }
     }
 
-    public function ajaxCheckForUser(Request $req)
+    public function ajaxCheckForLogin(Request $req)
     {
-        $user_count = User::where(['email' => $req->email])->count();
-        if ($user_count > 0) {
-            $response = array('found' => true);
-        } else {
-            $response = array('found' => false);
-        }
-    }
+        $user = User::where(['email' => $req->email])->first();
 
-    public function ajaxCheckForMatch(Request $req)
-    {
-        if ($req->password == $req->confirm_password) {
-            $response = array('pw_match' => true);
+        if (!$user || !Hash::check($req->password, $user->password)) {
+            return response()->json(['validation' => False]);
         } else {
-            $response = array('pw_match' => false);
+            return response()->json(['validation' => True]);
         }
-        return response()->json($response);
     }
 }

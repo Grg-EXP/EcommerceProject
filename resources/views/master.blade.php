@@ -66,6 +66,7 @@
     .invalid-input {
         color: #bd2626;
         font-weight: bold;
+
     }
 
     </html>
