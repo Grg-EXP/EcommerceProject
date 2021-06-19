@@ -37,13 +37,13 @@
                 <div class="modal-body row">
                     <div class="col-md-3">
                         <div class="">
-                            <h3>Categories</h3>
+                            <h3>{{ trans('header.categories') }}</h3>
 
                             <div class="list-group">
                                 @if (!isset($set_c))
-                                    <a href="/" class="list-group-item active">ALL</a>
+                                    <a href="/" class="list-group-item active">{{ trans('productContent.all') }}</a>
                                 @else
-                                    <a href="/" class="list-group-item">ALL</a>
+                                    <a href="/" class="list-group-item">{{ trans('productContent.all') }}</a>
                                 @endif
 
                                 @foreach ($categories as $category)

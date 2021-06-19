@@ -33,15 +33,7 @@
 
                     </div>
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+
                     <br><br>
                     <input type="hidden" name="product_id" value={{ $product->id }}>
                     <button type="submit" class="btn btn-primary">Add to Cart</button>

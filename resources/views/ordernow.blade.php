@@ -58,7 +58,7 @@
                         </div>
                         <br>
                         @foreach ($addresses as $address)
-                            <input type="radio" value="{{ $address['id'] }}" name="chosen_address"
+                            <input type="radio" value="{{ $address['id'] }}" name="chosen_address" required
                                 id="{{ $address['address'] }}">
                             <label for="{{ $address['address'] }}">
                                 <h5>{{ $address['name'] }}, {{ $address['address'] }},
@@ -70,7 +70,8 @@
                     </div>
                     <div class="form-group">
                         <label for="pwd">Payment Method</label> <br> <br>
-                        <input type="radio" value="cash" name="payment" id="p1"> <label for="p1">PayPal</label> <br> <br>
+                        <input type="radio" value="cash" name="payment" id="p1" required> <label for="p1">PayPal</label>
+                        <br> <br>
                         <input type="radio" value="cash" name="payment" id="p2"> <label for="p2">ATM card</label> <br><br>
                         <input type="radio" value="cash" name="payment" id="p3"> <label for="p3">Payment on Delivery</label>
                         <br> <br>

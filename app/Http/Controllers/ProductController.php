@@ -95,6 +95,7 @@ class ProductController extends Controller
 
     function orderNow(Request $req)
     {
+
         $userId =  $req->session()->get('user')['id'];
 
         if (Address::where('user_id', $userId)->count() > 0) {
@@ -119,6 +120,11 @@ class ProductController extends Controller
 
     function orderPlace(Request $req)
     {
+        $req->validate([
+            'chosen_address' => 'required',
+            'payment' => 'required',
+        ]);
+
         $userId = $req->session()->get('user')['id'];
         $allCart = Cart::where('user_id', $userId)->get();
 

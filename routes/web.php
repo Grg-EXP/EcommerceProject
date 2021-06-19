@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Session;
 
 
 Route::get('/login', [UserController::class, 'showLogin']);
-Route::get('/register', [UserController::class, 'showRegister']);
-Route::get('logout', [UserController::class, 'logout']);
+Route::get('/register', [UserController::class, 'showRegister'])->name('register');
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/ajaxRegister', [UserController::class, 'ajaxCheckForRegistration']);
 Route::post('/ajaxLogin', [UserController::class, 'ajaxCheckForLogin']);
 
@@ -46,7 +46,15 @@ Route::group(['middleware' => ['UserAuth']], function () {
     Route::post('address', [UserController::class, 'addAddress']);
 });
 
+Route::get('locale/{locale}', function ($locale) {
+    Session::put('locale', $locale);
 
+    if (request()->fullUrl() === redirect()->back()->getTargetUrl()) {
+        return redirect('/');
+    }
+
+    return redirect()->back();
+});
 /*
 Route::view('/', 'main');
 Route::view('/products', 'products');

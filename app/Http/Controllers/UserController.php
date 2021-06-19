@@ -14,7 +14,18 @@ class UserController extends Controller
 
     function showLogin(Request $req)
     {
-        session(['url.intended' => url()->previous()]);
+        if (!session()->has('url.intended')) {
+            $register_route = route('register');
+            $logout_route = route('logout');
+            $previous = url()->previous();
+            if (
+                substr($previous, 0, strlen($register_route)) !== $register_route &&
+                substr($previous, 0, strlen($logout_route)) !== $logout_route
+            ) {
+                session(['url.intended' => url()->previous()]);
+            }
+        }
+
         return view('login');
     }
 
@@ -30,6 +41,8 @@ class UserController extends Controller
         $user = User::where(['email' => $req->email])->first();
 
         $req->session()->put('user', $user);
+
+
         if (session()->has('url.intended')) {
             $url = $req->session()->get('url.intended');
             $req->session()->forget('url.intended');
