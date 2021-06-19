@@ -17,10 +17,12 @@ class UserController extends Controller
         if (!session()->has('url.intended')) {
             $register_route = route('register');
             $logout_route = route('logout');
+            $login_route = route('login');
             $previous = url()->previous();
             if (
                 substr($previous, 0, strlen($register_route)) !== $register_route &&
-                substr($previous, 0, strlen($logout_route)) !== $logout_route
+                substr($previous, 0, strlen($logout_route)) !== $logout_route &&
+                substr($previous, 0, strlen($login_route)) !== $login_route
             ) {
                 session(['url.intended' => url()->previous()]);
             }

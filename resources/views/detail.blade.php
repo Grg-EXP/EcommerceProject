@@ -10,16 +10,16 @@
             <div class="col-sm-6">
                 <a href="/">Go Back</a>
                 <h3>{{ $product->name }}</h3>
-                <h3>Price : € {{ $product->price }}</h3>
-                <h4>Details: {{ $product->description }}</h4>
-                <h4>Category: {{ $product->category }}</h4>
+                <h3>{{ trans('content.price') }} € {{ $product->price }}</h3>
+                <h4>{{ trans('content.details') }} {{ $product->description }}</h4>
+                <h4>{{ trans('content.category') }} {{ $product->category }}</h4>
 
 
 
                 <form action="/add_to_cart" method="POST">
                     @csrf
                     <div class="input-group ">
-                        <h4>Quantity:</h4>
+                        <h4>{{ trans('content.quantity') }}</h4>
 
                         <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                             class=" btn-success">
@@ -36,7 +36,7 @@
 
                     <br><br>
                     <input type="hidden" name="product_id" value={{ $product->id }}>
-                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    <button type="submit" class="btn btn-primary">{{ trans('content.add_tocart') }}</button>
                 </form>
                 <br><br>
 

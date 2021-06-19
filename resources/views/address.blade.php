@@ -19,7 +19,7 @@
 
                             <a href="/removeaddress/{{ $address->id }}"
                                 onclick="return confirm('Are you sure you want to delete this item?');"
-                                class="btn btn-danger btn-md glyphicon glyphicon-trash">Remove address
+                                class="btn btn-danger btn-md glyphicon glyphicon-trash">{{ trans('content.remove_address') }}
                             </a>
 
                         </ul>
@@ -39,7 +39,7 @@
                     @csrf
 
                     <div class="form-group">
-                        <label for="inputFullName" class="col-sm-2 control-label">Full Name</label>
+                        <label for="inputFullName" class="col-sm-2 control-label">{{ trans('content.full_name') }}</label>
                         <div class="col-sm-6">
                             <input type="text" required="required" class="form-control" id="inputFullName" name="name"
                                 placeholder="Full Name">
@@ -47,8 +47,7 @@
                     </div>
 
                     <div class="form-group">
-                        <p class="col-sm-offset-2 col-sm-10 help-block">Street address, P.O. box, company name, c/o</p>
-                        <label for="inputAddress" class="col-sm-2 control-label">Address</label>
+                        <label for="inputAddress" class="col-sm-2 control-label">{{ trans('content.address') }}</label>
                         <div class="col-sm-6">
                             <input type="text" required="required" class="form-control" id="inputAddress" name="address"
                                 placeholder="Address Line 1">
@@ -56,7 +55,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputCityTown" class="col-sm-2 control-label">City / Town</label>
+                        <label for="inputCityTown" class="col-sm-2 control-label">{{ trans('content.city') }}</label>
                         <div class="col-sm-6">
                             <input type="text" required="required" class="form-control" id="inputCityTown" name="city"
                                 placeholder="City / Town">
@@ -64,8 +63,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputStateProvinceRegion" class="col-sm-2 control-label">State / Province /
-                            Region</label>
+                        <label for="inputStateProvinceRegion"
+                            class="col-sm-2 control-label">{{ trans('content.state') }}</label>
                         <div class="col-sm-6">
                             <input type="text" required="required" class="form-control" id="inputStateProvinceRegion"
                                 name="region" placeholder="State / Province / Region">
@@ -73,7 +72,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputZipPostalCode" class="col-sm-2 control-label">Zip / Postal Code</label>
+                        <label for="inputZipPostalCode" class="col-sm-2 control-label">{{ trans('content.zip') }}</label>
                         <div class="col-sm-6">
                             <input type="text" required="required" class="form-control" id="inputZipPostalCode" name="zip"
                                 placeholder="Zip / Postal Code">
@@ -84,7 +83,7 @@
                         <label for="selectCountry" class="col-sm-2 control-label">Country</label>
                         <div class="col-sm-6">
                             <select class="form-control" required="required" id="selectCountry" name="country">
-                                <option value="" selected="selected">(please select a country)</option>
+                                <option value="" selected="selected">{{ trans('content.please_select') }}</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AL">Albania</option>
                                 <option value="DZ">Algeria</option>

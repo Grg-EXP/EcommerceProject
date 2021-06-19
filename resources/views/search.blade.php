@@ -2,10 +2,10 @@
 @section('content')
     <br>
     @if (count($searched_products) > 0)
-        <h4 class="text-center"> Results found</h4>
+        <h4 class="text-center">{{ trans('content.result_found') }}</h4>
 
     @else
-        <h4 class="text-center">No results found</h4>
+        <h4 class="text-center">{{ trans('content.no_result_found') }}</h4>
     @endif
     <br><br>
     <div class="container">

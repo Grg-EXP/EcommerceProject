@@ -23,11 +23,11 @@
             <!-- Left and right controls -->
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
+                <span class="sr-only">}</span>
             </a>
             <a class="right carousel-control" href="#myCarousel" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
+                <span class="sr-only"></span>
             </a>
         </div>
 
@@ -37,13 +37,13 @@
                 <div class="modal-body row">
                     <div class="col-md-3">
                         <div class="">
-                            <h3>{{ trans('header.categories') }}</h3>
+                            <h3>{{ trans('content.categories') }}</h3>
 
                             <div class="list-group">
                                 @if (!isset($set_c))
-                                    <a href="/" class="list-group-item active">{{ trans('productContent.all') }}</a>
+                                    <a href="/" class="list-group-item active">{{ trans('content.all') }}</a>
                                 @else
-                                    <a href="/" class="list-group-item">{{ trans('productContent.all') }}</a>
+                                    <a href="/" class="list-group-item">{{ trans('content.all') }}</a>
                                 @endif
 
                                 @foreach ($categories as $category)
