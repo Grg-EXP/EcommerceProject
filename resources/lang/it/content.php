@@ -65,4 +65,7 @@ return [
     'register_now' => 'Registrati Ora',
     'already_account' => 'Hai gia un\'account?',
 
+    'previous' => 'Precedente',
+    'next' => 'Successivo',
+
 ];

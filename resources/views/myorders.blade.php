@@ -1,9 +1,12 @@
 @extends('core.master')
 @section('content')
-    <div class="custom-product">
-        <div class="col-sm-10">
+    <div class="container">
+        <div class="col-sm-12">
             <div class="trending-wrapper">
                 @if (count($orders) > 0)
+                    <div>
+                        {{ $orders->links('vendor.pagination.custom') }}
+                    </div>
                     <h1>{{ trans('content.my_orders') }} </h1>
                     @foreach ($orders as $item)
                         <div class=" row searched-item cart-list-devider">

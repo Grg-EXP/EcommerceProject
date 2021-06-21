@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\UserAuth;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,12 @@ Route::get('locale/{locale}', function ($locale) {
     }
 
     return redirect()->back();
+});
+
+
+/// API
+Route::group(['middleware' => ['ApiMiddleware']], function () {
+    Route::post('api/best_product', [ApiController::class, 'bestProduct']);
 });
 /*
 Route::view('/', 'main');

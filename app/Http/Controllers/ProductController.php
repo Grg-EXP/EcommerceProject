@@ -14,14 +14,18 @@ class ProductController extends Controller
 {
     function index()
     {
-        $products = Product::all()->take(12);
+        //$products = Product::all()->take(12);
+        $products = DB::table('products')->simplePaginate(8);
+        //$products = Product::sortable()->simplePaginate(8);
+        //$product = Product::all()->first();
+        //return $product->category;
         $category = Category::all();
+
         return view('product', ['products' => $products, 'categories' => $category]);
     }
 
     function detail($id)
     {
-
         $product = DB::table('products')->join('category', 'products.category_id', '=', 'category.id')
             ->where('products.id', $id)
             ->select('products.*', 'category.name as category')
@@ -32,14 +36,14 @@ class ProductController extends Controller
 
     function category($id)
     {
-        $products = Product::where('category_id', $id)->get()->take(30);
+        $products = Product::where('category_id', $id)->simplePaginate(8);
         $category = Category::all();
         return view('product', ['products' => $products, 'categories' => $category, 'set_c' => $id]);
     }
 
     function search(Request $req)
     {
-        $data = Product::where('name', 'like', '%' . $req->input('query') . '%')->get();
+        $data = Product::where('name', 'like', '%' . $req->input('query') . '%')->simplePaginate(8);
         return view('search', ['searched_products' => $data]);
     }
 
@@ -149,7 +153,7 @@ class ProductController extends Controller
         $userId = $req->session()->get('user')['id'];
         $ordersDetail = DB::table('orders')->orderBy('orders.created_at', 'DESC')
             ->join('products', 'orders.product_id', '=', 'products.id')->join('address', 'orders.address_id', 'address.id')
-            ->where('orders.user_id', $userId)->get();
+            ->where('orders.user_id', $userId)->simplePaginate(5);
         return view('myorders', ['orders' => $ordersDetail]);
     }
     function removeAddress($id)

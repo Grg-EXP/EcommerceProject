@@ -27,7 +27,8 @@ $total = ProductController::cartItem(Session::get('user')['id']);
             </ul>
             <form action="/search" class="navbar-form navbar-left">
                 <div class="form-group">
-                    <input type="text" name="query" class="form-control" placeholder="{{ trans('header.submit') }}">
+                    <input type="text" name="query" required class="form-control"
+                        placeholder="{{ trans('header.submit') }}">
                 </div>
                 <button type="submit" class="btn btn-default">{{ trans('header.submit') }}</button>
             </form>

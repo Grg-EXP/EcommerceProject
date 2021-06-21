@@ -66,7 +66,8 @@ return [
     'register_now' => 'Register Now',
     'already_account' => 'Already have an account?',
 
-
+    'previous' => 'Previous',
+    'next' => 'Next',
 
 
 

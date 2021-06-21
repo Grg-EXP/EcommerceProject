@@ -10,7 +10,9 @@
     <br><br>
     <div class="container">
         <div class="row">
-
+            <div>
+                {{ $searched_products->links('vendor.pagination.custom') }}
+            </div>
             @foreach ($searched_products as $s_product)
                 <div class="col-lg-3 col-md-4 col-md-6 col-xs-6">
                     <br>
