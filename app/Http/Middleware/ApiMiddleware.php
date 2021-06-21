@@ -17,6 +17,7 @@ class ApiMiddleware
     public function handle(Request $request, Closure $next)
     {
         return $next($request);
+
         if (!$request->session()->has('user_token')) {
             return "accesso non autorizzato";
         } else return $next($request);
