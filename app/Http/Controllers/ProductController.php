@@ -15,7 +15,7 @@ class ProductController extends Controller
     function index()
     {
         //$products = Product::all()->take(12);
-        $products = DB::table('products')->simplePaginate(8);
+        $products = DB::table('products')->where('availability', '>', 0)->simplePaginate(8);
         //$products = Product::sortable()->simplePaginate(8);
         //$product = Product::all()->first();
         //return $product->category;
@@ -36,28 +36,26 @@ class ProductController extends Controller
 
     function category($id)
     {
-        $products = Product::where('category_id', $id)->simplePaginate(8);
+        $products = Product::where('category_id', $id)->where('availability', '>', 0)->simplePaginate(8);
         $category = Category::all();
         return view('product', ['products' => $products, 'categories' => $category, 'set_c' => $id]);
     }
 
     function search(Request $req)
     {
-        $data = Product::where('name', 'like', '%' . $req->input('query') . '%')->simplePaginate(8);
+        $data = Product::where('name', 'like', '%' . $req->input('query') . '%')->where('availability', '>', 0)->simplePaginate(8);
         return view('search', ['searched_products' => $data]);
     }
 
     function addToCart(Request $req)
     {
-
+        $userId = $req->session()->get('user')['id'];
+        $available = Product::where('id', $req->product_id)->first()->availability;
         //view details
         $req->validate([
-            'quantity' => 'required|integer|min:1|max:100',
+            'quantity' => "required|integer|min:1|max:$available",
         ]);
         //
-
-        $userId = $req->session()->get('user')['id'];
-
 
         if (Cart::where('user_id', $userId)->where('product_id', $req->product_id)->count() > 0) {
             $newQuantity = Cart::where('user_id', $userId)->where('product_id', $req->product_id)->first()->quantity;
@@ -144,6 +142,9 @@ class ProductController extends Controller
             $order->total_price = $req->total;
             $order->save();
             Cart::where('user_id', $userId)->delete();
+            $available = Product::where('id', $cart['product_id'])->first()->availability;
+            Product::where('id', $cart['product_id'])
+                ->update(['availability' => ($available - $cart['quantity'])]);
         }
         return redirect('/myorders');
     }

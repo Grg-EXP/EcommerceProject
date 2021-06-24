@@ -22,11 +22,8 @@ class ApiController extends Controller
 
     function bestProduct()
     {
-        // return response()->json(['validation' => True]);
-        //return "ciao";
-        //$products = DB::table('products')->first();
+
         $id = 11;
-        // $quantity_for_product = array();
 
         $quantity_for_product = collect();
 

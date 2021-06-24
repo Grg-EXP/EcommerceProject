@@ -25,7 +25,8 @@
                             class=" btn-success">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
-                        <input class="form-control input-number" name="quantity" value="1" type="number" min="1" max="100">
+                        <input readonly class="form-control input-number" name="quantity" value="1" type="number" min="1"
+                            max="{{ $product->availability }}">
                         <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                             class=" btn-danger ">
                             <span class="glyphicon glyphicon-minus"></span>
